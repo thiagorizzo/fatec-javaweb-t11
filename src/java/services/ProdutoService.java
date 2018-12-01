@@ -13,7 +13,7 @@ import repository.ProdutoRepository;
  *
  * @author MAQLAB
  */
-public class ProdutoService {
+public class ProdutoService implements IProdutoService {
     // Service dependendo do ProdutoRepository
     ProdutoRepository produtoRepository = new ProdutoRepository();
     
