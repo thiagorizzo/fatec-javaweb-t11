@@ -5,6 +5,9 @@
  */
 package controllers.interfaces;
 
+import java.util.List;
+import models.Produto;
+
 /**
  *
  * @author MAQLAB

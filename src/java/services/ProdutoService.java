@@ -5,6 +5,7 @@
  */
 package services;
 
+import controllers.interfaces.IProdutoService;
 import java.util.List;
 import models.Produto;
 import repository.ProdutoRepository;
