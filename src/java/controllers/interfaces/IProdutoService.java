@@ -13,6 +13,6 @@ import models.Produto;
  * @author MAQLAB
  */
 public interface IProdutoService {
-    
     List<Produto> listarProdutos();
+    Produto detalharProduto(int id);
 }

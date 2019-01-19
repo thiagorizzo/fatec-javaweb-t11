@@ -21,4 +21,8 @@ public class ProdutoService implements IProdutoService {
     public List<Produto> listarProdutos() {
         return produtoRepository.getAll();
     }
+    
+    public Produto detalharProduto(int id) {
+        return produtoRepository.getById(id);
+    }
 }

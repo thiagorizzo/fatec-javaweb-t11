@@ -8,7 +8,6 @@ package controllers;
 import controllers.interfaces.IProdutoService;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,16 +21,18 @@ import services.ProdutoService;
  *
  * @author MAQ01LAB04
  */
-@WebServlet(name = "ProdutoController", urlPatterns = {"/Produto"})
-public class ProdutoController extends HttpServlet {
+@WebServlet(name = "DetalheProdutoController", urlPatterns = {"/DetalheProduto"})
+public class DetalheProdutoController extends HttpServlet {
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        IProdutoService produtoService = new ProdutoService();
-        List<Produto> produtos = produtoService.listarProdutos();
+    IProdutoService produtoService = new ProdutoService();
+    
+    public void doGet(HttpServletRequest request, HttpServletResponse reponse) throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Produto produto = produtoService.detalharProduto(id);   
         
-        request.setAttribute("produtos", produtos);
+        request.setAttribute("produto", produto);
         
-        RequestDispatcher rd = request.getRequestDispatcher("Produto/ListarProdutos.jsp");
-        rd.forward(request, response);
+        RequestDispatcher rd = request.getRequestDispatcher("Produto/DetalharProduto.jsp");
+        rd.forward(request, reponse);
     }
 }

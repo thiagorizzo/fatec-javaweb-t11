@@ -27,6 +27,29 @@ public class ProdutoRepository {
 
     }
     
+    public Produto getById(int idProduto) {
+        Produto produto = null;
+        
+        try {
+            PreparedStatement ps = conexaoBD.getConnection().prepareStatement("SELECT * FROM produto WHERE id = ?");
+            ps.setInt(1, idProduto);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next())
+            {
+                int id = rs.getInt("id");
+                String nome = rs.getString("nome");
+                float preco = rs.getFloat("preco");
+                
+                produto = new Produto(id, nome, preco);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoRepository.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return produto;
+    }
+
     public List<Produto> getAll() {
         List<Produto> produtos = new ArrayList<Produto>();
         
