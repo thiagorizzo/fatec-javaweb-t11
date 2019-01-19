@@ -16,6 +16,7 @@
                 <th>Id</th>
                 <th>Nome</th>
                 <th>Preço</th>
+                <th>Categoria</th>
             </tr>
             
             
@@ -28,6 +29,7 @@
                     <td><%= p.getId() %></td>
                     <td><%= p.getNome() %></td>
                     <td><%= p.getPreco() %></td>
+                    <td><%= p.getCategoria().getNome()%></td>
                 </tr>
 
         <%

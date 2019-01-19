@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import models.Categoria;
 import models.Produto;
 
 /**
@@ -31,7 +32,8 @@ public class ProdutoRepository {
         Produto produto = null;
         
         try {
-            PreparedStatement ps = conexaoBD.getConnection().prepareStatement("SELECT * FROM produto WHERE id = ?");
+            PreparedStatement ps = conexaoBD.getConnection().prepareStatement("SELECT c.nome as nomeCategoria, c.id as idCategoria, p.*"
+                    + " FROM produto p JOIN categoria c ON p.idCategoria = c.id WHERE p.id = ?");
             ps.setInt(1, idProduto);
             ResultSet rs = ps.executeQuery();
             
@@ -41,7 +43,12 @@ public class ProdutoRepository {
                 String nome = rs.getString("nome");
                 float preco = rs.getFloat("preco");
                 
-                produto = new Produto(id, nome, preco);
+                int idCategoria = rs.getInt("idCategoria");
+                String nomeCategoria = rs.getString("nomeCategoria");
+                
+                Categoria categoriaProduto = new Categoria(idCategoria, nomeCategoria);
+                
+                produto = new Produto(id, nome, preco, categoriaProduto);
             }
         } catch (SQLException ex) {
             Logger.getLogger(ProdutoRepository.class.getName()).log(Level.SEVERE, null, ex);
@@ -54,7 +61,9 @@ public class ProdutoRepository {
         List<Produto> produtos = new ArrayList<Produto>();
         
         try {
-            PreparedStatement ps = conexaoBD.getConnection().prepareStatement("SELECT * FROM produto");
+            PreparedStatement ps = conexaoBD.getConnection().prepareStatement(
+                    "SELECT c.nome as nomeCategoria, c.id as idCategoria, p.*"
+                    + " FROM produto p JOIN categoria c ON p.idCategoria = c.id");
             ResultSet rs = ps.executeQuery();
             
             while(rs.next())
@@ -63,7 +72,11 @@ public class ProdutoRepository {
                 String nome = rs.getString("nome");
                 float preco = rs.getFloat("preco");
                 
-                Produto produto = new Produto(id, nome, preco);
+                int idCategoria = rs.getInt("idCategoria");
+                String nomeCategoria = rs.getString("nomeCategoria");
+                
+                Categoria categoriaProduto = new Categoria(idCategoria, nomeCategoria);
+                Produto produto = new Produto(id, nome, preco, categoriaProduto);
                 
                 produtos.add(produto);
             }
