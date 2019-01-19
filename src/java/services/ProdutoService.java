@@ -18,7 +18,7 @@ public class ProdutoService implements IProdutoService {
     // Service dependendo do ProdutoRepository
     ProdutoRepository produtoRepository = new ProdutoRepository();
     
-    public List<Produto> ListarProdutos() {
+    public List<Produto> listarProdutos() {
         return produtoRepository.getAll();
     }
 }

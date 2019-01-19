@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
 public class ConexaoBD {
     
     private Connection connection;
@@ -21,12 +20,12 @@ public class ConexaoBD {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             
-            this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3361/projetoweb", "root", "");
+            this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/projetoweb?serverTimezone=UTC", "root", "");
 
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ConexaoBD.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-                Logger.getLogger(ConexaoBD.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConexaoBD.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     

@@ -27,7 +27,7 @@ public class ProdutoController extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         IProdutoService produtoService = new ProdutoService();
-        List<Produto> produtos = produtoService.ListarProdutos();
+        List<Produto> produtos = produtoService.listarProdutos();
         
         request.setAttribute("produtos", produtos);
         

@@ -24,7 +24,7 @@ public class ClienteController extends HttpServlet {
     
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         
-        
+       
         PrintWriter out = response.getWriter();
         out.println("<html><body>Hello World</body></html>");
     }

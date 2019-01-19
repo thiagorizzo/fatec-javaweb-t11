@@ -5,8 +5,13 @@
  */
 package repository;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import models.Produto;
 
 /**
@@ -14,15 +19,35 @@ import models.Produto;
  * @author MAQLAB
  */
 public class ProdutoRepository {
+    ConexaoBD conexaoBD = ConexaoBD.getInstance();
+    
     List<Produto> produtos = new ArrayList<Produto>();
 
     public ProdutoRepository() {
-        produtos.add(new Produto(1, "caneta", 2.0f));
-        produtos.add(new Produto(2, "lápis", 1.5f));
-        produtos.add(new Produto(3, "régua", 1.5f));        
+
     }
     
     public List<Produto> getAll() {
+        List<Produto> produtos = new ArrayList<Produto>();
+        
+        try {
+            PreparedStatement ps = conexaoBD.getConnection().prepareStatement("SELECT * FROM produto");
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next())
+            {
+                int id = rs.getInt("id");
+                String nome = rs.getString("nome");
+                float preco = rs.getFloat("preco");
+                
+                Produto produto = new Produto(id, nome, preco);
+                
+                produtos.add(produto);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoRepository.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         return produtos;
     }
 }

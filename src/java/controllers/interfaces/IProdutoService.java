@@ -14,5 +14,5 @@ import models.Produto;
  */
 public interface IProdutoService {
     
-    List<Produto> ListarProdutos();
+    List<Produto> listarProdutos();
 }
