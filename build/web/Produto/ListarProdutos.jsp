@@ -17,6 +17,8 @@
                 <th>Nome</th>
                 <th>Preço</th>
             </tr>
+            
+            
         <%
             List<Produto> produtos = (List<Produto>) request.getAttribute("produtos");
             for(Produto p : produtos) {
