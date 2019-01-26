@@ -15,21 +15,13 @@ public class ConexaoBD {
     private static ConexaoBD conexao;
     
     // Construtor privado
-    private ConexaoBD()
+    private ConexaoBD() throws ClassNotFoundException, SQLException
     { 
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            
-            this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/projetoweb?serverTimezone=UTC", "root", "");
-
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ConexaoBD.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(ConexaoBD.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        Class.forName("com.mysql.jdbc.Driver");
+        this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/projetoweb?serverTimezone=UTC", "root", "senha");
     }
     
-    public static ConexaoBD getInstance() {
+    public static ConexaoBD getInstance() throws ClassNotFoundException, SQLException {
         if (conexao == null)
             conexao = new ConexaoBD();
         

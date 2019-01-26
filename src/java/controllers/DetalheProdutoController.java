@@ -24,7 +24,11 @@ import services.ProdutoService;
 @WebServlet(name = "DetalheProdutoController", urlPatterns = {"/DetalheProduto"})
 public class DetalheProdutoController extends HttpServlet {
 
-    IProdutoService produtoService = new ProdutoService();
+    IProdutoService produtoService;
+    
+    public DetalheProdutoController() throws Exception {
+         produtoService = new ProdutoService();
+    }
     
     public void doGet(HttpServletRequest request, HttpServletResponse reponse) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));

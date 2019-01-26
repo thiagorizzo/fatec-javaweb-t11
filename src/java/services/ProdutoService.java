@@ -16,7 +16,11 @@ import repository.ProdutoRepository;
  */
 public class ProdutoService implements IProdutoService {
     // Service dependendo do ProdutoRepository
-    ProdutoRepository produtoRepository = new ProdutoRepository();
+    ProdutoRepository produtoRepository;
+    
+    public ProdutoService() throws Exception {
+        produtoRepository = new ProdutoRepository();        
+    }
     
     public List<Produto> listarProdutos() {
         return produtoRepository.getAll();

@@ -20,12 +20,12 @@ import models.Produto;
  * @author MAQLAB
  */
 public class ProdutoRepository {
-    ConexaoBD conexaoBD = ConexaoBD.getInstance();
+    ConexaoBD conexaoBD;
     
     List<Produto> produtos = new ArrayList<Produto>();
 
-    public ProdutoRepository() {
-
+    public ProdutoRepository() throws Exception {
+        conexaoBD = ConexaoBD.getInstance();
     }
     
     public Produto getById(int idProduto) {

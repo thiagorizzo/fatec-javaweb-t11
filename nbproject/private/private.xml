@@ -3,8 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/MAQ01LAB04/projeto/fatec-javaweb-t11/src/java/controllers/ProdutoController.java</file>
+            <file>file:/C:/Users/MAQ01LAB04/projeto/fatec-javaweb-t11/src/java/models/Produto.java</file>
+            <file>file:/C:/Users/MAQ01LAB04/projeto/fatec-javaweb-t11/src/java/controllers/ListarProdutosController.java</file>
+            <file>file:/C:/Users/MAQ01LAB04/projeto/fatec-javaweb-t11/src/java/services/ProdutoService.java</file>
+            <file>file:/C:/Users/MAQ01LAB04/projeto/fatec-javaweb-t11/src/java/controllers/interfaces/IProdutoService.java</file>
+            <file>file:/C:/Users/MAQ01LAB04/projeto/fatec-javaweb-t11/src/java/repository/ProdutoRepository.java</file>
+            <file>file:/C:/Users/MAQ01LAB04/projeto/fatec-javaweb-t11/web/Produto/DetalharProduto.jsp</file>
+            <file>file:/C:/Users/MAQ01LAB04/projeto/fatec-javaweb-t11/src/java/models/Categoria.java</file>
+            <file>file:/C:/Users/MAQ01LAB04/projeto/fatec-javaweb-t11/src/java/controllers/CadastrarProdutoController.java</file>
+            <file>file:/C:/Users/MAQ01LAB04/projeto/fatec-javaweb-t11/web/Produto/FormularioProduto.jsp</file>
             <file>file:/C:/Users/MAQ01LAB04/projeto/fatec-javaweb-t11/web/Produto/ListarProdutos.jsp</file>
+            <file>file:/C:/Users/MAQ01LAB04/projeto/fatec-javaweb-t11/src/java/repository/ConexaoBD.java</file>
+            <file>file:/C:/Users/MAQ01LAB04/projeto/fatec-javaweb-t11/src/java/controllers/DetalheProdutoController.java</file>
         </group>
     </open-files>
 </project-private>

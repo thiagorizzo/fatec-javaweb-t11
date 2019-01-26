@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import models.Produto;
 
 /**
  *
@@ -25,6 +26,7 @@ public class CadastrarProdutoController extends HttpServlet {
         float precoProduto = Float.parseFloat(request.getParameter("preco"));
         int categoriaProduto = Integer.parseInt(request.getParameter("categoria"));
         
+             
         //Produto produto = new Produto(nomeProduto, precoProduto, categoriaProduto);
     }
 }
