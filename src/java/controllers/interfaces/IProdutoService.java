@@ -13,6 +13,7 @@ import models.Produto;
  * @author MAQLAB
  */
 public interface IProdutoService {
-    List<Produto> listarProdutos();
-    Produto detalharProduto(int id);
+    List<Produto> listarProdutos() throws Exception;
+    Produto detalharProduto(int id) throws Exception;
+    Produto cadastrarProduto(Produto produto) throws Exception;
 }

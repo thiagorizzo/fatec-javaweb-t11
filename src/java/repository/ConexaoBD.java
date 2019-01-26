@@ -18,7 +18,7 @@ public class ConexaoBD {
     private ConexaoBD() throws ClassNotFoundException, SQLException
     { 
         Class.forName("com.mysql.jdbc.Driver");
-        this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/projetoweb?serverTimezone=UTC", "root", "senha");
+        this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/projetoweb?serverTimezone=UTC", "root", "");
     }
     
     public static ConexaoBD getInstance() throws ClassNotFoundException, SQLException {

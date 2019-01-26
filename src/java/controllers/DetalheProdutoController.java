@@ -30,13 +30,25 @@ public class DetalheProdutoController extends HttpServlet {
          produtoService = new ProdutoService();
     }
     
-    public void doGet(HttpServletRequest request, HttpServletResponse reponse) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
-        Produto produto = produtoService.detalharProduto(id);   
+        
+        Produto produto;
+        
+        try {
+            produtoService = new ProdutoService();        
+            produto = produtoService.detalharProduto(id);   
+        } catch(Exception ex) {
+            request.setAttribute("exception", ex);
+            
+            RequestDispatcher rd = request.getRequestDispatcher("Error.jsp");
+            rd.forward(request, response);
+            return;         
+        }
         
         request.setAttribute("produto", produto);
         
         RequestDispatcher rd = request.getRequestDispatcher("Produto/DetalharProduto.jsp");
-        rd.forward(request, reponse);
+        rd.forward(request, response);
     }
 }

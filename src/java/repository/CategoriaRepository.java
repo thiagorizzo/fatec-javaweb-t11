@@ -7,6 +7,7 @@ package repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,9 +28,20 @@ public class CategoriaRepository {
     public Categoria getById(int idCategoria) throws SQLException {
         Connection connection = conexaoBD.getConnection();
         
+        Categoria categoria = null;
+        
         PreparedStatement ps = connection
                 .prepareStatement("SELECT * FROM Categoria WHERE id = ?");
-     
-        return null;
+        ps.setInt(1, idCategoria);
+        
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            int id = rs.getInt("id");
+            String nome = rs.getString("nome");
+            
+            categoria = new Categoria(idCategoria, nome);
+        }
+        
+        return categoria;
     }
 }

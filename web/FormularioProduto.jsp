@@ -12,7 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <form method="POST" action="/CadastrarProduto">
+        <form method="POST" action="/ProjetoWeb/CadastrarProduto">
             <label>Nome:</label>
             <input type="text" id="nome" name="nome"/>
             <label>Preço:</label>
@@ -22,6 +22,7 @@
                 <option value="2">Jogos</option>
                 <option value="1">Material Escolar</option>
             </select>
+            <input type="submit" value="Cadastrar"/>
         </form>
     </body>
 </html>

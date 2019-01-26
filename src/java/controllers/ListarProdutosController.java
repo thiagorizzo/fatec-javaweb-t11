@@ -22,14 +22,16 @@ import services.ProdutoService;
  *
  * @author MAQ01LAB04
  */
-@WebServlet(name = "ListarProdutosController", urlPatterns = {"/Produto/*"})
+@WebServlet(name = "ListarProdutosController", urlPatterns = {"/ListarProduto"})
 public class ListarProdutosController extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         IProdutoService produtoService = null;
+        List<Produto> produtos = null;
         
         try {
-            produtoService = new ProdutoService();        
+            produtoService = new ProdutoService(); 
+            produtos = produtoService.listarProdutos();
         } catch(Exception ex) {
             request.setAttribute("exception", ex);
             
@@ -37,8 +39,6 @@ public class ListarProdutosController extends HttpServlet {
             rd.forward(request, response);
             return;         
         }
-        
-        List<Produto> produtos = produtoService.listarProdutos();
         
         request.setAttribute("produtos", produtos);
         

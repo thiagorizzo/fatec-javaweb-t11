@@ -22,11 +22,16 @@ public class ProdutoService implements IProdutoService {
         produtoRepository = new ProdutoRepository();        
     }
     
-    public List<Produto> listarProdutos() {
+    public List<Produto> listarProdutos() throws Exception {
         return produtoRepository.getAll();
     }
     
-    public Produto detalharProduto(int id) {
+    public Produto detalharProduto(int id) throws Exception {
         return produtoRepository.getById(id);
+    }
+
+    @Override
+    public Produto cadastrarProduto(Produto produto) throws Exception {
+        return produtoRepository.insert(produto);
     }
 }
