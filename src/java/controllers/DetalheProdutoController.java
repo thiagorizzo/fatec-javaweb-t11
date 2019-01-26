@@ -38,17 +38,16 @@ public class DetalheProdutoController extends HttpServlet {
         try {
             produtoService = new ProdutoService();        
             produto = produtoService.detalharProduto(id);   
+            
+            request.setAttribute("produto", produto);
+
+            RequestDispatcher rd = request.getRequestDispatcher("Produto/DetalharProduto.jsp");
+            rd.forward(request, response);            
         } catch(Exception ex) {
             request.setAttribute("exception", ex);
             
             RequestDispatcher rd = request.getRequestDispatcher("Error.jsp");
             rd.forward(request, response);
-            return;         
         }
-        
-        request.setAttribute("produto", produto);
-        
-        RequestDispatcher rd = request.getRequestDispatcher("Produto/DetalharProduto.jsp");
-        rd.forward(request, response);
     }
 }

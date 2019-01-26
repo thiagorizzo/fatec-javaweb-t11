@@ -6,6 +6,7 @@
 package services;
 
 import controllers.interfaces.ICategoriaService;
+import java.util.List;
 import models.Categoria;
 import repository.CategoriaRepository;
 
@@ -24,5 +25,10 @@ public class CategoriaService implements ICategoriaService {
     @Override
     public Categoria buscarPeloId(int idCategoria) throws Exception {
         return categoriaRepository.getById(idCategoria);
+    }
+
+    @Override
+    public List<Categoria> listar() throws Exception {
+        return categoriaRepository.getAll();
     }
 }

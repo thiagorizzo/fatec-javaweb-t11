@@ -5,6 +5,7 @@
  */
 package controllers.interfaces;
 
+import java.util.List;
 import models.Categoria;
 
 /**
@@ -13,4 +14,5 @@ import models.Categoria;
  */
 public interface ICategoriaService {
     Categoria buscarPeloId(int idCategoria) throws Exception;
+    List<Categoria> listar() throws Exception;
 }

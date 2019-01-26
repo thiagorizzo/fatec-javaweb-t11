@@ -4,6 +4,8 @@
     Author     : MAQ01LAB04
 --%>
 
+<%@page import="models.Categoria"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,6 +14,10 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%
+            List<Categoria> categorias = (List<Categoria>) request.getAttribute("categorias");
+        %>
+        
         <form method="POST" action="/ProjetoWeb/CadastrarProduto">
             <label>Nome:</label>
             <input type="text" id="nome" name="nome"/>
@@ -19,8 +25,9 @@
             <input type="number" id="preco" name="preco"/>
             <label>Categoria:</label>
             <select name="categoria">
-                <option value="2">Jogos</option>
-                <option value="1">Material Escolar</option>
+                <% for(Categoria c : categorias) { %>
+                    <option value='<%= c.getId() %>'><%= c.getNome() %></option>
+                <% } %>
             </select>
             <input type="submit" value="Cadastrar"/>
         </form>

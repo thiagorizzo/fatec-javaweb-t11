@@ -25,6 +25,24 @@ public class CategoriaRepository {
         conexaoBD = ConexaoBD.getInstance();
     }
     
+    public List<Categoria> getAll() throws Exception {
+        Connection connection = conexaoBD.getConnection();
+        
+        List<Categoria> categorias = new ArrayList<Categoria>();
+        
+        PreparedStatement ps = connection
+                .prepareStatement("SELECT * FROM Categoria");
+        
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            int id = rs.getInt("id");
+            String nome = rs.getString("nome");
+            categorias.add(new Categoria(id, nome));
+        }
+        
+        return categorias;
+    }
+    
     public Categoria getById(int idCategoria) throws SQLException {
         Connection connection = conexaoBD.getConnection();
         
