@@ -12,7 +12,8 @@
         <script>
             var buscarProdutosCarrinho = () => {
                 $.get("/ProjetoWeb/ListarCarrinho",
-                    function(data) {
+                    function(data, a, e) {
+                        debugger;
                         console.log(data);
                     });
             }
@@ -20,8 +21,10 @@
             var adicionarProduto = (idProduto) => {
                 $.post("/ProjetoWeb/AdicionarCarrinho?id=" + idProduto,
                     function(data) {
-                        debugger;
-                        alert("Cadastrou com MUITO sucesso.");
+                        if (data != "")
+                            document.body.innerHTML = data
+                        else
+                            alert("produto adicionado com sucesso.");
                     });
             }
         </script>
