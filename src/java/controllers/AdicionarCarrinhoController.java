@@ -27,8 +27,8 @@ import viewmodels.ProdutoCarrinho;
  *
  * @author MAQ01LAB04
  */
-@WebServlet(name = "AdicionarCarrinho", urlPatterns = {"/AdicionarCarrinho"})
-public class AdicionarCarrinho extends HttpServlet {
+@WebServlet(name = "AdicionarCarrinhoController", urlPatterns = {"/AdicionarCarrinho"})
+public class AdicionarCarrinhoController extends HttpServlet {
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         IProdutoService produtoService;
@@ -37,14 +37,19 @@ public class AdicionarCarrinho extends HttpServlet {
 
         try {
             produtoService = new ProdutoService();
+            
             HttpSession session = request.getSession();
+            
             List<ProdutoCarrinho> produtosCarrinho;
 
             Object carrinho = session.getAttribute("produtosCarrinho");
             if (carrinho != null)
                 produtosCarrinho = (List<ProdutoCarrinho>) carrinho;
             else
+            {
                 produtosCarrinho = new ArrayList<ProdutoCarrinho>();
+                session.setAttribute("produtosCarrinho", produtosCarrinho);
+            }
 
             Produto produto = produtoService.detalharProduto(idProduto);
             
@@ -58,11 +63,10 @@ public class AdicionarCarrinho extends HttpServlet {
                 pc.incrementarQuantidade();
             } else {
                 pc = new ProdutoCarrinho(produto);
+                produtosCarrinho.add(pc);                
             }
-            
-            produtosCarrinho.add(pc);
         } catch (Exception ex) {
-            Logger.getLogger(AdicionarCarrinho.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdicionarCarrinhoController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
