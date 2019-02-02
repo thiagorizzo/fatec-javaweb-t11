@@ -29,8 +29,12 @@ public class FiltroAutenticacao implements Filter {
         HttpServletResponse httpResponse = (HttpServletResponse) response;
         HttpSession session = httpRequest.getSession();
         
-        if (session.getAttribute("usuarioAutenticado") == null)
-            httpResponse.sendRedirect("/Login.jsp");
+        if (session.getAttribute("usuarioAutenticado") == null) {
+            request.setAttribute("erroLogin", "Operação não permitida (Usuário não autenticado).");
+            RequestDispatcher rd = request.getRequestDispatcher("/Login.jsp");
+            rd.forward(request, response);
+            //httpResponse.sendRedirect("/ProjetoWeb/Login.jsp");
+        }
         else
              chain.doFilter(request, response);
     }

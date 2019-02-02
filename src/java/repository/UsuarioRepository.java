@@ -29,7 +29,7 @@ public class UsuarioRepository {
         
         PreparedStatement ps = conexaoBD.getConnection().prepareStatement("SELECT * FROM Usuario WHERE nome = ? AND senha = ?");
         ps.setString(1, name);
-        ps.setString(1, password);
+        ps.setString(2, password);
         ResultSet rs = ps.executeQuery();
 
         if (rs.next())

@@ -20,12 +20,14 @@
             var adicionarProduto = (idProduto) => {
                 $.post("/ProjetoWeb/AdicionarCarrinho?id=" + idProduto,
                     function(data) {
+                        debugger;
                         alert("Cadastrou com MUITO sucesso.");
                     });
             }
         </script>
     </head>
     <body>
+        <%@include file="/Cabecalho.jsp" %>
         <h1>Produtos</h1>
         <table class="table table-stripped">
             <tr>

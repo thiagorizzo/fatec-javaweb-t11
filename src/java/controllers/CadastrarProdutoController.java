@@ -46,7 +46,6 @@ public class CadastrarProdutoController extends HttpServlet {
             
             RequestDispatcher rd = request.getRequestDispatcher("Error.jsp");
             rd.forward(request, response);
-            return;         
         }            
     }
 }
