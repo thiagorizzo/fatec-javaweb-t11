@@ -1,6 +1,8 @@
 <%@page import="java.util.List"%>
 <%@page import="models.Produto"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="mt" uri="/WEB-INF/tlds/bibliotecatags.tld"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -32,32 +34,6 @@
     <body>
         <%@include file="/Cabecalho.jsp" %>
         <h1>Produtos</h1>
-        <table class="table table-stripped">
-            <tr>
-                <th>Id</th>
-                <th>Nome</th>
-                <th>Preço</th>
-                <th>Categoria</th>
-                <th></th>
-            </tr>
-            
-            
-        <%
-            List<Produto> produtos = (List<Produto>) request.getAttribute("produtos");
-            for(Produto p : produtos) {
-        %>
-
-                <tr>
-                    <td><%= p.getId() %></td>
-                    <td><%= p.getNome() %></td>
-                    <td><%= p.getPreco() %></td>
-                    <td><%= p.getCategoria().getNome()%></td>
-                    <td><button onclick="adicionarProduto(<%= p.getId() %>)">Adicionar</button></td>
-                </tr>
-
-        <%
-            }
-        %>
-        </table>
+        <mt:gridProdutos></mt:gridProdutos>
     </body>
 </html>
