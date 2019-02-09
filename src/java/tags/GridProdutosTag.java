@@ -16,14 +16,17 @@ import models.Produto;
 import services.ProdutoService;
 
 public class GridProdutosTag extends SimpleTagSupport {
+
+    // Atributo
+    private List<Produto> produtos;
+    
+    public void setProdutos(List<Produto> produtos) {
+        this.produtos = produtos;
+    }
     
     @Override
     public void doTag() throws IOException {
         try {
-            IProdutoService produtoService = new ProdutoService();
-            
-            List<Produto> produtos = produtoService.listarProdutos();
-            
             JspWriter out = this.getJspContext().getOut();
 
             out.println("<table class='table table-stripped'>");

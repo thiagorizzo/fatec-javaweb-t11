@@ -34,6 +34,9 @@
     <body>
         <%@include file="/Cabecalho.jsp" %>
         <h1>Produtos</h1>
-        <mt:gridProdutos></mt:gridProdutos>
+        <c:forEach var="item" items="${produtos}">
+            ${item.nome}
+        </c:forEach>
+        <%--<mt:gridProdutos produtos="${produtos}"></mt:gridProdutos>--%>
     </body>
 </html>

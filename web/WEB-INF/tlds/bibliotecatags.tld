@@ -12,5 +12,11 @@
         <tagclass>tags.GridProdutosTag</tagclass>           
         <bodycontent>scriptless</bodycontent> 
         <info>Lista dos produtos</info>      
+        <attribute>
+            <name>produtos</name>
+            <deferred-value>
+                <type>java.util.List</type>
+            </deferred-value>
+        </attribute>
     </tag> 
 </taglib>
